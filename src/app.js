@@ -13,8 +13,8 @@ const app = async (yargsObj) => {
 			await findMovie(collection, {title: yargsObj.title});
             console.log(`I have found the movie you are looking for ${yargsObj.actor}`);
         } else if (yargsObj.update) {
-            await updateMovie(collection, {title: yargsObj.title, actor: yargsObj.actor}, {$set: {title: yargsObj.title, actor: yargsObj.actor}});
-            console.log(`I have updated the movie you asked for ${yargsObj.title} staring ${yargsObj.actor}`); 
+            await updateMovie(collection, yargsObj);
+            console.log(`I have updated the movie ${yargsObj.title} starring ${yargsObj.actor} with ${yargsObj.newtitle} starring ${yargsObj.newactor}`); 
         } else if (yargsObj.delete) {
             await deleteMovie(collection, {title: yargsObj.title, actor: yargsObj.actor});
             console.log(`I have delete the movie you asked ${yargsObj.title, yargsObj.actor}`)
